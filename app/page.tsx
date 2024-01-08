@@ -1,3 +1,5 @@
+import { Empty } from 'antd';
+
 import CardList from "./components/cardList";
 import CustomDropDown from "./components/customDropdown";
 import Header from "./components/header";
@@ -11,7 +13,7 @@ export default async function Home({
 }) {
   const todos = await getTodos();
   // @ts-ignore
-  const params:string = searchParams["search"] ?? "";
+  const params: string = searchParams["search"] ?? "";
 
   const filterByStatus: any = searchParams["filterByStatus"] ?? "";
 
@@ -42,9 +44,15 @@ export default async function Home({
         <CustomDropDown />
       </div>
       <div className="flex items-center gap-1 flex-wrap">
-        {filterBySearchValue.map((todo: any) => (
-          <CardList todo={todo} key={todo.id} />
-        ))}
+        {todos.length > 0 ? (
+          <>
+            {filterBySearchValue.map((todo: any) => (
+              <CardList todo={todo} key={todo.id} />
+            ))}
+          </>
+        ) : (
+          <Empty className='m-auto'/>
+        )}
       </div>
     </div>
   );
