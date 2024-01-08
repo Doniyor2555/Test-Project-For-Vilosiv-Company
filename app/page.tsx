@@ -2,7 +2,7 @@ import CardList from "./components/cardList";
 import CustomDropDown from "./components/customDropdown";
 import Header from "./components/header";
 import DeleteModal from "./components/modals/deleteModal";
-import getTodos from "./hooks/getTodos/getTodos";
+import getTodos from "./hooks/getTodos";
 
 export default async function Home({
   searchParams,
