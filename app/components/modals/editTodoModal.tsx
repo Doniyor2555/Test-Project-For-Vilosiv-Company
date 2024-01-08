@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Todo } from "@prisma/client";
 import toast from "react-hot-toast";
 import { Button, Input, Modal, Select, Form } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 
 interface EditTodoModalProps {
   onOpen: boolean;
@@ -21,12 +22,14 @@ const EditTodoModal: React.FC<EditTodoModalProps> = ({
   const [title, setTitle] = useState(todos.title);
   const [status, setStatus] = useState(todos.status);
   const [todo, setTodo] = useState(todos.todo);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const { TextArea } = Input;
 
   const updateTodo = async () => {
     try {
+      setLoading(true);
       await axios
         .post("/api/updateTodo", {
           id: todos.id,
@@ -42,6 +45,7 @@ const EditTodoModal: React.FC<EditTodoModalProps> = ({
           toast.error("Something went wrong");
         })
         .finally(() => {
+          setLoading(false);
           onClose();
         });
     } catch (error) {
@@ -56,7 +60,7 @@ const EditTodoModal: React.FC<EditTodoModalProps> = ({
       title="Edit"
       footer={
         <Button type="primary" className="bg-blue-500" onClick={updateTodo}>
-          Update
+          {loading ? <LoadingOutlined /> : " Delete"}
         </Button>
       }
     >

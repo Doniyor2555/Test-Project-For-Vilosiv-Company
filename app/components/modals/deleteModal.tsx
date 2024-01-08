@@ -7,6 +7,8 @@ import toast from "react-hot-toast";
 import { Button } from "antd";
 import Modal from "antd/es/modal/Modal";
 
+import { LoadingOutlined } from "@ant-design/icons";
+
 interface DeleteModalProps {
   title: string;
   onOpen: boolean;
@@ -51,8 +53,9 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
         <button
           className="w-[100px] h-[40px] text-lg font-normal bg-[#FF0028] text-white hover:bg-red-700 rounded-md transition duration-200 ease-in"
           onClick={deleteTodo}
+          disabled={loading}
         >
-          Delete
+         {loading ? <LoadingOutlined/> :" Delete"}
         </button>
       }
     >
