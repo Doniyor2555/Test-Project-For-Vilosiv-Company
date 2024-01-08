@@ -60,7 +60,7 @@ const EditTodoModal: React.FC<EditTodoModalProps> = ({
       title="Edit"
       footer={
         <Button type="primary" className="bg-blue-500" onClick={updateTodo}>
-          {loading ? <LoadingOutlined /> : " Update"}
+          {loading ? <LoadingOutlined /> : "Update"}
         </Button>
       }
     >
