@@ -25,8 +25,6 @@ const CreateTodoModal: React.FC<ICreateTodoModalProps> = ({
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  
-
   const onSubmit = async () => {
     if (title.length < 3 && status.length < 1 && todo.length < 7) {
       return;
@@ -38,10 +36,11 @@ const CreateTodoModal: React.FC<ICreateTodoModalProps> = ({
           title,
           status,
           todo,
-        }).then(() => {
+        })
+        .then(() => {
           router.refresh();
-          toast.success('Created successfully!')
-          onClose()
+          toast.success("Created successfully!");
+          onClose();
         })
         .finally(() => {
           setTitle("");
@@ -57,63 +56,51 @@ const CreateTodoModal: React.FC<ICreateTodoModalProps> = ({
   return (
     <Modal title="Create todo" open={onOpen} onCancel={onClose} footer="">
       <Form layout="vertical" onFinish={onSubmit}>
-        <div className="flex justify-between items-center flex-wrap">
+        <div className="flex justify-between items-center flex-wrap pt-2">
           <div>
-            <Form.Item
-              label="Title"
-              name="Title"
-              validateDebounce={1000}
-              rules={[{ min: 3 }]}
-            >
-              <Input
-                placeholder="Title"
-                name="title"
-                id="title"
-                className="mt-1"
-                allowClear
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-            </Form.Item>
+            <label htmlFor="title">Title</label>
+            <Input
+              placeholder="Title"
+              name="title"
+              id="title"
+              className="mt-1"
+              allowClear
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
           <div className="flex flex-col ">
-            <Form.Item rules={[{ min: 1 }]} label="Status" name="Status">
-              <Select
-                defaultValue="Select a progress"
-                style={{ width: 220 }}
-                id="status"
-                value={status}
-                onChange={(e) => setStatus(e)}
-                options={[
-                  { value: "Done", label: "Done" },
-                  { value: "In progress", label: "in progress" },
-                  {
-                    value: "Waiting for execution",
-                    label: "Waiting for execution",
-                  },
-                ]}
-              />
-            </Form.Item>
+            <label htmlFor="status">Status</label>
+            <Select
+              defaultValue="Select a progress"
+              style={{ width: 220 }}
+              id="status"
+              value={status}
+              onChange={(e) => setStatus(e)}
+              options={[
+                { value: "Done", label: "Done" },
+                { value: "In progress", label: "in progress" },
+                {
+                  value: "Waiting for execution",
+                  label: "Waiting for execution",
+                },
+              ]}
+            />
           </div>
           <div className="mt-2 w-full pb-5">
-            <Form.Item
-              label="Todo"
-              name="Todo"
-              validateDebounce={1000}
-              rules={[{ min: 7 }]}
-            >
-              <TextArea
-                showCount
-                maxLength={300}
-                style={{ height: 176, resize: "none" }}
-                className="mt-[8px]"
-                allowClear
-                name="todo"
-                value={todo}
-                onChange={(e) => setTodo(e.target.value)}
-                minLength={7}
-              />
-            </Form.Item>
+            <label htmlFor="todo">Todo</label>
+
+            <TextArea
+              showCount
+              maxLength={300}
+              style={{ height: 176, resize: "none" }}
+              className="mt-[8px]"
+              allowClear
+              name="todo"
+              value={todo}
+              onChange={(e) => setTodo(e.target.value)}
+              minLength={7}
+            />
           </div>
         </div>
         <Button

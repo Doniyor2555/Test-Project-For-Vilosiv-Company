@@ -52,7 +52,7 @@ const Header = () => {
           className="bg-blue-500 "
           onClick={toggleModal}
         >
-          Создать
+          Create
         </Button>
       </div>
       <CreateTodoModal onOpen={toggleCreateTodoModal} onClose={toggleModal} />
