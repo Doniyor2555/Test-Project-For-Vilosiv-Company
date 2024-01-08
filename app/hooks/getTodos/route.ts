@@ -1,7 +1,7 @@
 import prismadb from "../../lib/prismadb";
 
 const getTodos = async () => {
-  const todos = await prismadb.todo.findMany();
+  const todos = await prismadb.todo.findMany({});
 
   return todos;
 };
