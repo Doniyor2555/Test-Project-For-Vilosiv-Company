@@ -42,6 +42,9 @@ const CreateTodoModal: React.FC<ICreateTodoModalProps> = ({
           toast.success("Created successfully!");
           onClose();
         })
+        .catch((error) => {
+          toast.error("Something went wrong");
+        })
         .finally(() => {
           setTitle("");
           setStatus("");
@@ -49,6 +52,7 @@ const CreateTodoModal: React.FC<ICreateTodoModalProps> = ({
           setLoading(false);
         });
     } catch (error) {
+      toast.error("Something went wrong");
       console.log("createTodoModal[ERROR]", error);
     }
   };
