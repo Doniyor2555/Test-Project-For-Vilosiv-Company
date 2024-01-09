@@ -26,7 +26,7 @@ const CreateTodoModal: React.FC<ICreateTodoModalProps> = ({
   const router = useRouter();
 
   const onSubmit = async () => {
-    if (title.length < 3 && status.length < 1 && todo.length < 7) {
+    if (title.length < 1 && todo.length < 1) {
       return;
     }
     try {
