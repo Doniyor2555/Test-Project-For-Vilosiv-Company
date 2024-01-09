@@ -28,7 +28,7 @@ const CustomDropDown = () => {
       </div>
 
       {isActiveDropDrown ? (
-        <div className="w-[160px] border-[1px] border-[#DCDCDC] bg-white rounded-md absolute right-[2px] mt-[30px] ">
+        <div className="w-[160px] border-[1px] border-[#DCDCDC] bg-white rounded-md absolute right-[2px] mt-[30px] z-20">
           <div className="text-xs text-black/0.60 ml-[4px] mt-[4px]">
             sort by status:
           </div>
