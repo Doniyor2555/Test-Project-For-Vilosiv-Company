@@ -36,10 +36,14 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
           router.refresh();
           toast.success(`Успешно удалено ${title}`);
         })
+        .catch((error) => {
+          toast.error("Something went wrong");
+        })
         .finally(() => {
           setLoading(false);
         });
     } catch (error) {
+      toast.error("Something went wrong");
       console.log("cardList[ERROR]", error);
     }
   };
@@ -55,7 +59,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
           onClick={deleteTodo}
           disabled={loading}
         >
-         {loading ? <LoadingOutlined/> :" Delete"}
+          {loading ? <LoadingOutlined /> : " Delete"}
         </button>
       }
     >

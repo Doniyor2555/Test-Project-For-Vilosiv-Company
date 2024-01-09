@@ -49,6 +49,7 @@ const EditTodoModal: React.FC<EditTodoModalProps> = ({
           onClose();
         });
     } catch (error) {
+      toast.error("Something went wrong");
       console.log("editTodo[ERROR]", error);
     }
   };
