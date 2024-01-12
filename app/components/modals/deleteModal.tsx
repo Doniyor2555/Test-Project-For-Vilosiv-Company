@@ -34,7 +34,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
         })
         .then(() => {
           router.refresh();
-          toast.success(`Успешно удалено ${title}`);
+          toast.success(`successfully deleted ${title}`);
         })
         .catch((error) => {
           toast.error("Something went wrong");
