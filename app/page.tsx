@@ -1,4 +1,4 @@
-import { Empty } from 'antd';
+import { Empty } from "antd";
 
 import CardList from "./components/cardList";
 import CustomDropDown from "./components/customDropdown";
@@ -21,15 +21,7 @@ export default async function Home({
     ? todos.filter((item) =>
         item.title?.toLocaleLowerCase()?.includes(params.toLowerCase())
       )
-    : filterByStatus === "Done"
-    ? todos.filter((item) =>
-        item.status.toLocaleLowerCase().includes(filterByStatus.toLowerCase())
-      )
-    : filterByStatus === "In Progress"
-    ? todos.filter((item) =>
-        item.status.toLocaleLowerCase().includes(filterByStatus.toLowerCase())
-      )
-    : filterByStatus === "Waiting for execution"
+    : filterByStatus
     ? todos.filter((item) =>
         item.status.toLocaleLowerCase().includes(filterByStatus.toLowerCase())
       )
@@ -51,7 +43,7 @@ export default async function Home({
             ))}
           </>
         ) : (
-          <Empty className='m-auto'/>
+          <Empty className="m-auto" />
         )}
       </div>
     </div>
